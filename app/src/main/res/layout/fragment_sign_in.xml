@@ -109,7 +109,7 @@
             android:fontFamily="@font/poppins"
             android:gravity="center_vertical"
             android:hint="@string/pass"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             android:paddingHorizontal="20dp"
             android:paddingVertical="5dp"
             android:textColorHint="#D6CBCB"

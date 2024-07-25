@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.databinding.FragmentSignInBinding
 import com.example.quizapp.databinding.FragmentSignUpBinding
+import com.example.quizapp.util.NavigationUtil
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private lateinit var binding: FragmentSignUpBinding
@@ -17,6 +19,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding = FragmentSignUpBinding.bind(view)
@@ -31,22 +34,18 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         }
         binding.icBack.setOnClickListener {
-            navigation(R.id.signUpFragment, R.id.signFragment)
+            val navController = findNavController()
+            NavigationUtil.fragmentToFragmentNavigation(
+                navController,
+                R.id.signFragment,
+                R.id.signUpFragment
+            )
         }
         binding.haveSignIn.setOnClickListener {
-            navigation(R.id.signUpFragment, R.id.signFragment)
+            val navController = findNavController()
+            NavigationUtil.fragmentToFragmentNavigation(navController, R.id.signFragment)
         }
     }
 
-    private fun navigation(from: Int, to: Int) {
-        val navController = findNavController()
-        val navOptions = NavOptions.Builder()
-            .setPopUpTo(
-                from,
-                true
-            ) // Replace with the actual ID of the current fragment
-            .build()
-        navController.navigate(to, null, navOptions)
-    }
 
 }

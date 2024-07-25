@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.quizapp.databinding.ActivityMainBinding
+import com.example.quizapp.util.NavigationUtil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,10 +28,13 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.startButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
+            startHomeActivity()
         }
 
+    }
+    private fun startHomeActivity() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
